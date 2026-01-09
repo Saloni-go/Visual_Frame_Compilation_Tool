@@ -1,0 +1,91 @@
+
+body {
+  font-family:'Courier New', Courier, monospace;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+ background-color: gray;
+}
+
+.inner-body {
+  background-image: url("red.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 95%;
+  height: 95%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+  .left-column {
+    flex: 1;
+  }
+
+  .right-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    
+  }
+
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 15%);
+    grid-gap: 2%;
+    margin-left: 5%;
+    /* margin-bottom: 10%;
+    margin-top: 10%; */
+
+  }
+
+  .grid-item {
+    width: 90%;
+    height: auto;
+    /* margin-bottom: 10%;
+    margin-top: 10%; */
+  }
+  #duration-input {
+    
+    margin-bottom: 1%;
+    margin-top: 1%;
+  }
+
+  #transition-select {
+    margin-bottom: 1%;
+    margin-top: 1%;
+    
+
+  }
+
+  #music-select {
+    margin-bottom: 1%;
+    margin-top: 1%;
+    padding-block: 1%;
+    
+  }
+
+  #video-preview {
+    width: 80%;
+    height: auto;
+  }
+
+  #generate-button {
+    display: block;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    padding: 3% 5%;
+    background-color: rgb(51, 51, 51);
+    color: #fff;
+    border: none;
+    border-radius: 10%;
+    cursor: pointer;
+    font-size: 20px;
+    /* align-self: center; */
+  }

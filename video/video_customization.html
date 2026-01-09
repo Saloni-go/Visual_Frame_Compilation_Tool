@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Video Customization</title><!DOCTYPE html>
+  <html>
+  <head>
+    <title>Video Customization</title>
+    <link rel="stylesheet" href="video_customization.css">
+   
+  </head>
+  <body>
+  <link rel="stylesheet" href="video_customization.css">
+ 
+</head>
+<body>
+  <a href="home.html" class="valid">Home</a>
+  <div class="inner-body">
+   
+  <div class="left-column">
+    <h1 style="margin-left: 3%;">Generate a video</h1>
+
+    <div class="grid-container">
+      <a href="#">
+        <img src="photo1.jpg" class="grid-item"> </a>
+
+      <a href="#">
+        <img src="photo2.jpg" class="grid-item"> </a>
+
+      <a href="#">
+        <img src="photo3.jpg" class="grid-item"> </a>
+
+      <a href="#">
+        <img src="photo4.jpg" class="grid-item"> </a>
+
+      <a href="#">
+        <img src="photo5.jpg" class="grid-item"> </a>
+
+      <a href="#">
+        <img src="photo6.jpg" class="grid-item"> </a>
+    </div>
+
+    
+  </div>
+
+  <div class="right-column">
+
+
+    <label style="margin-top: 2%;"     for="duration-input">Duration (in seconds):</label>
+    <input type="number" id="duration-input" value="3">
+    <br><br>
+
+
+
+    <label for="transition-select">Transition Effect:</label>
+    <select id="transition-select">
+      <option value="fade">Fade</option>
+      <option value="slide">Slide</option>
+      <option value="zoom">Zoom</option>
+      <option value="swipe">Swipe</option>
+    
+    </select>
+    <br><br>
+    <label for="music-select">Background Music:</label>
+    <form action="/upload" method="post">
+    <select id="music-select" name="audio">
+      <option value="funny-kids_59sec-190857.mp3">Music 1</option>
+      <option value="Tera Yaar Hoon Main(PagalWorld.com.cm)-[AudioTrimmer.com].mp3">Music 2</option>
+      <option value="Chipi Chipi Chapa Chapa Ringtone Download - MobCup.Com.Co.mp3">Music 3</option>
+      <option value="Gulaabo - Lockdown 128 Kbps (mp3cut.net).mp3">Music 4</option>
+      
+    </select>
+    
+    <audio id="music-player" controls style="display:none">
+      YOUR BROWSER is shit then, it does not support this audio element.</audio>
+    <br>
+<br>
+</form>
+    <a href="preview.html" oncllick="previewAudio"><button id="generate-button" enabled>Preview </button></a>
+    <br><br>
+    <br>
+   
+    <!-- <center>
+    <video id="video-preview" controls>
+
+
+      
+    </video>
+  </center>  -->
+</div>
+<br>
+<br>
+  </div>
+
+  <script>
+
+    // var videoPlayer=document.getElementById('video-player');
+    // var musicPlayer=document.getElementById('music-player');
+    // var musicStartPosition=0;
+  
+    // function startAudio(){
+    //   var selectedMusic=document.getElementById('music-select').value;
+    //   musicPlayer.src=selectedMusic;
+    //   musicPlayer.currentTime=musicStartPosition;
+    //   musicPlayer.play();
+    // }
+  
+    // videoPlayer.addEventListener('play',startAudio);
+    // videoPlayer.addEventListener('pause',function(){
+    //   musicStartPosition=musicPlayer.currentTime;
+    //   musicPlayer.pause();
+    // });
+    // videoPlayer.addEventListener('ended',function(){
+    //   musicPlayer.pause();
+    //   musicPlayer.src="";
+    // });
+  
+    var musicSelect=document.getElementById('music-select');
+    musicSelect.addEventListener('change',function(){
+      var selectedMusic=musicSelect.value;
+      sessionStorage.setItem('selectedMusic',selectedMusic);
+    });
+  </script>
+
+</body>
+</html>

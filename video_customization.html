@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Video Customization</title>
+	<link rel="stylesheet" href="video_customization.css">
+
+</head>
+
+<body>
+	
+		<a href="home.html" class="valid">Home</a>
+		<div class="inner-body">
+
+			<div class="left-column">
+				<h1 style="margin-left: 3%;">Generate a video</h1>
+
+				<div class="grid-container">
+					<a href="#">
+						<img src="media/download1.jpeg" class="grid-item"> </a>
+
+					<a href="#">
+						<img src="media/download2.jpeg" class="grid-item"> </a>
+
+					<a href="#">
+						<img src="media/Screenshot from 2023-10-25 19-01-36.png" class="grid-item"> </a>
+
+				
+				</div>
+
+
+			</div>
+
+			<div class="right-column">
+
+
+				<label style="margin-top: 2%;" for="duration-input">Duration (in seconds):</label>
+				<input type="number" id="duration-input" value="3">
+				<br><br>
+
+
+
+				<label for="transition-select">Transition Effect:</label>
+				<form action="/upload" method="post">
+				<select id="transition-select" name="transition">
+					<option value="fade">Fade</option>
+					<option value="slide">Slide</option>
+					<option value="zoom">Zoom</option>
+					<option value="swipe">Swipe</option>
+
+				</select>
+				</form>
+				<br><br>
+				<label for="music-select">Background Music:</label>
+				<form action="/upload" method="post">
+					<select id="music-select" name="audio">
+						<option value="output_audio/funny-kids_59sec-190857.mp3">Music1</option>
+						<option value="output_audio/Tera Yaar Hoon Main(PagalWorld.com.cm)-[AudioTrimmer.com].mp3">Music2</option>
+						<option value="output_audio/Chipi Chipi Chapa Chapa Ringtone Download - MobCup.Com.Co.mp3">Music3</option>
+						<option value="output_audio/Gulaabo - Lockdown 128 Kbps (mp3cut.net).mp3">Music4</option>
+
+					</select>
+
+					<audio id="music-player" controls style="display:none">
+						YOUR BROWSER is shit then, it does not support this audio element.</audio>
+					<br>
+					<br>
+				</form>
+				<a href="video_preview.html" onclick="saveAndRedirect()"><button id="generate-button" enabled>Preview
+					</button></a>
+				<br><br>
+				<br>
+
+	
+			</div>
+			<br>
+			<br>
+		</div>
+
+		<script>
+
+	var musicSelect=document.getElementById('music-select');
+    musicSelect.addEventListener('change',function(){
+      var selectedMusic=musicSelect.value;
+      sessionStorage.setItem('selectedMusic',selectedMusic);
+    });
+
+	var transitionSelect=document.getElementById('transition-select');
+    transitionSelect.addEventListener('change',function(){
+      var selectedtransition=transitionSelect.value;
+      sessionStorage.setItem('selectedtransition',selectedtransition);
+    });
+
+	
+		</script>
+
+	</body>
+
+</html>

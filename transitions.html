@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<head>
+    <title>transition</title>
+</head>
+<body>
+    <video controls width="360" height="400">
+        <source src="media/output_video.mp4">
+        your browser is not compatible with this video.
+    </video>
+
+    <label for="transitionSelect">Select transition</label>
+    <select id="transitionSelect">
+        <option value="fade">Fade</option>
+        <option value="slide">Slide</option>
+        <option value="zoom">Zoom</option>
+        <option value="swipe">Swipe</option>
+        <option value="none">None</option>
+    </select>
+
+
+    <script>
+        const videoPlayer=document.getElementById('videoPlayer');
+        const transitionSelect=document.getElementById('transitionSelect');
+
+        transitionSelect.addEventListener('change',function(){
+            const selectedTransition=this.value;
+            applyTransition(selectedTransition);
+        });
+
+        function applyTransition(transition){
+            switch(transition){
+                case 'fade':
+                    break;
+                case 'slide':
+                    break;
+                case 'zoom': 
+                    break;
+                case 'swipe':
+                    break;
+                case 'none': 
+                    break;
+                default:
+                    break;
+            }
+        }
+    </script>
+</body>

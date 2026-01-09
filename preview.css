@@ -1,0 +1,90 @@
+#video_controls{
+    background: #333;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    margin-top: 19px;
+}
+
+#container{
+    width: 80%;
+    background: rgb(178, 192, 207);
+    margin: 0px auto;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+#my_video{
+    width:100%;
+    height:350px;
+    display:block;
+    margin-bottom: 19px;
+}
+
+#row{
+    align-items: center;
+}
+
+#downloadButton{
+    text-align: center;
+}
+
+body{
+    font-family: monospace;
+}
+
+#downloadButton button{ 
+    background-color: #4e6bff;
+    color: #fff;
+    border:none;
+    padding: 9px 19px;
+    font-size: 15px;
+    border-radius: 4.5px;
+    cursor: pointer;
+    transition: background-color 0.5s ease;
+}
+
+#downloadButton button:hover{ 
+    background-color: #5f4c06;
+}
+
+select{
+    font-size: 15px;
+    border-radius: 4.5px;
+    padding: 8px;
+}
+
+#playpausebUTTON{
+    background-color: #6c5ce7;
+    color: #fff;
+    font-size: 15px;
+    padding:10px 20px;
+    cursor: pointer;
+    border-radius: 4.5px;
+    transition: background-color 0.5s ease;
+}
+
+#playpausebUTTON:hover{
+    background-color: rgb(112, 122, 154);
+}
+
+#qualitySelect {
+    background-color: #6c5ce7;
+    font-size: 15px;
+    border-radius: 4.5px;
+    padding: 8px;
+    cursor: pointer; 
+    transition: background-color 0.5s ease;
+}
+#heading{
+    text-align: center;
+    color: #333;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin-top: 20px;
+}
+
+#qualitySelect:hover {
+    background-color:  rgb(112, 122, 154); 
+}

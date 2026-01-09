@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Video Preview</title>
+    <link rel="stylesheet" type="text/css" href="preview.css">
+</head>
+<body>
+
+    <a href="home.html" class="valid">Home</a>
+
+
+<h1 id="heading">PREVIEW</h1>
+<div id="row">
+<div id="container">
+    <video id="my_video" controls="controls"  autoplay poster="../static/thumbnail.png">
+        <source src="output_video_p/output_video_720p.mp4">
+    </video>
+    <div id="video_controls">
+        <button id="playpausebUTTON">Pause</button>
+        <input id="seekslider" type="range" min="0" max="100" value="0" step="1" >
+        <select id="qualitySelect" onchange="changeQuality()">
+            <option value="1080p">1080p</option>
+            <option value="720p" selected>720p</option>
+            <option value="240p">240p</option>
+        </select>
+        <button id="rewindButton">Rewind</button>
+    </div>
+
+</div>
+<audio id="music-player" controls style="display:none">
+    YOUR BROWSER does not support this audio element.
+  </audio>
+<br><br></br>
+<div id="downloadButton">
+    <a href="output_video_p/output_video_720p.mp4" download="video2.mp4"><button>Download</button></a>
+</div>
+</div>
+
+
+    <script>
+
+        var videoPlayer=document.getElementById('my_video');
+        var musicPlayer=document.getElementById('music-player');
+        var musicStartPosition=0;
+        
+
+        function startAudio(){
+        var selectedMusic=sessionStorage.getItem('selectedMusic');
+        if(selectedMusic){ 
+            musicPlayer.src=selectedMusic;
+            musicPlayer.currentTime=musicStartPosition;
+            musicPlayer.play();
+        }
+        }
+        
+        videoPlayer.addEventListener('play',startAudio);
+        videoPlayer.addEventListener('pause',function(){
+        musicStartPosition=musicPlayer.currentTime;
+        musicPlayer.pause();
+        });
+        videoPlayer.addEventListener('ended',function(){
+        musicPlayer.pause();
+        musicPlayer.src="";
+        });
+
+        var vid, playbtn, seekslider;
+        function initializePlayer(){
+            vid=document.getElementById("my_video");
+            playbtn=document.getElementById("playpausebUTTON");
+            seekslider=document.getElementById("seekslider");
+            playbtn.addEventListener("click",playPause,false);
+            seekslider.addEventListener("change",vidSeek,false);
+            vid.addEventListener("timeupdate",seektimeupdate,false);
+        }
+        window.onload=initializePlayer;
+
+        function playPause(){
+        if(vid.paused){
+            vid.play();
+            playbtn.innerHTML="Pause";
+        }else{
+            vid.pause();
+            playbtn.innerHTML="Play";
+        }
+        }
+
+        function vidSeek(){
+            var seekto=vid.duration*(seekslider.value/100);
+            vid.currentTime=seekto;
+        }
+        function seektimeupdate(){
+            var nt=vid.currentTime*(100/vid.duration);
+            seekslider.value=nt;
+        }
+        function changeQuality(){
+            var selectedQuality=qualitySelect.value.toLowerCase(); // Convert to lowercase
+            var defaultVideoPath="output_video.mp4";
+            var videoPaths={
+                '1080p': 'output_video_p/output_video_1080p.mp4',
+                '720p':'output_video_p/output_video_720p.mp4',
+                '240p':'output_video_p/output_video_240p.mp4',
+            };
+
+            
+            if(videoPaths.hasOwnProperty(selectedQuality)){
+                videoPath=videoPaths[selectedQuality];
+            }
+            else{
+                videoPath=defaultVideoPath;
+            }
+            vid.src=videoPath;
+            vid.load();
+            vid.play();
+        }
+         
+        // function applyTransition(){
+        //     var selectedTransition=sessionStorage.getItem('selectedTransition');
+        //     if(selectedTransition==='fade'){
+        //         vid.src='output_video_p/output_video_fade.mp4';
+        //         vid.load();
+        //         vid.play();
+        //     }
+        // }
+        // sessionStorage.setItem('selectedTransition','fade');
+        // applytransition();
+        const video = document.getElementById('my_video');
+        const rewindButton = document.getElementById('rewindButton');
+
+        rewindButton.addEventListener('click', () => {
+            video.currentTime = 0; // Set video playback to start from the beginning
+            musicPlayer.currentTime=0;
+            video.play(); // Start playing the video
+            musicPlayer.play();
+        });
+
+        video.addEventListener('ended', () => {
+            video.currentTime = 0; // Reset video playback to start from the beginning
+            musicPlayer.currentTime=0;
+        });
+   </script>
+</body>
+</html>

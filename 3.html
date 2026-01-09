@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resolution</title>
+</head>
+<body>
+    <video controls src="output_video_p/output_video_fade.mp4"></video>
+
+    <div id="downloadButton">
+        <button id="downloadBtn">Download</button>
+    </div>
+
+    <script>
+        const downloadBtn = document.getElementById("downloadBtn");
+        const videoUrl = "output_video_p/output_video_720p.mp4"; // URL of the video file
+
+        downloadBtn.addEventListener("click", () => {
+            console.log("Download button clicked");
+            downloadFile(videoUrl);
+        });
+
+        function downloadFile(url) {
+            console.log("Downloading file from:", url);
+            fetch(url)
+            .then(res => res.blob())
+            .then(blob => {
+                const blobUrl = URL.createObjectURL(blob);
+                const a = document.createElement("a");
+                a.href = blobUrl;
+                a.download = url.substring(url.lastIndexOf("/") + 1);
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(blobUrl);
+                console.log("Download completed");
+            })
+            .catch(err => {
+                console.error("Error downloading file:", err);
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<head>
+    <title>Audio</title>
+</head>
+<body>
+    <video id="myVideo" controls width="360" height="400">
+        <source src="Mera saya sath hoga @MakeJokeOf _ Saurabh Shukla.mp4">
+        your browser is not compatible with this video.
+    </video>
+
+    <label for="AudioSelect">Select transition</label>
+    <select id="AudioSelect" onchange="changeBackgroundMusic()">
+        <option value="audio/Chipi Chipi Chapa Chapa Ringtone Download - MobCup.Com.Co.mp3">Music1</option>
+        <option value="audio/funny-kids_59sec-190857.mp3">Music2</option>
+        <option value="audio/Gulaabo - Lockdown 128 Kbps (mp3cut (mp3cut.net).mp3">Music3</option>
+        <option value="audio/Tera Yaar Hoon Main(PagalWorld.com.cm)-[AudioTrimmer.com].mp3">Music4</option>
+        <option value="none">None</option>
+    </select>
+
+<script>
+    function changeBackgroundMusic(){
+        var video=document.getElementById('myVideo');
+        var audioSelect=document.getElementById('AudioSelect');
+        var selectedAudio=audioSelect.value;
+
+        if(selectedAudio=='none'){
+            video.removeAttribute('muted');
+            video.pause();
+        }
+        else{
+            video.setAttribute('muted','true');
+            video.pause();
+            video.src=selectedAudio;
+            video.load();
+            video.play();
+        }
+    }
+</script>
+</body>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Video Preview</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/preview.css">
+</head>
+<body>
+
+    <a href="home.html" class="valid">Home</a>
+
+
+<h1 id="heading">PREVIEW</h1>
+<div id="row">
+<div id="container">
+    <video id="my_video" controls="controls"  autoplay poster="./media/download1.jpeg">
+        <source src="./media/output_video.mp4/video.mp4" type="video/mp4">
+    </video>
+    <div id="video_controls">
+        <button id="playpausebUTTON">Pause</button>
+        <input id="seekslider" type="range" min="0" max="100" value="0" step="1" >
+        <select id="qualitySelect" onchange="changeQuality()">
+            <option value="720p">720p</option>
+            <option value="480p">480p</option>
+            <option value="360p">360p</option>
+        </select>
+    </div>
+
+</div>
+<audio id="music-player" controls style="display:none">
+    YOUR BROWSER does not support this audio element.
+  </audio>
+<br><br></br>
+<div id="downloadButton">
+    <a href="./media/output_video.mp4" download="video2.mp4"><button>Download</button></a>
+</div>
+</div>
+
+
+    <script>
+
+        var videoPlayer=document.getElementById('my_video');
+        var musicPlayer=document.getElementById('music-player');
+        var musicStartPosition=0;
+
+        function startAudio(){
+        var selectedMusic=sessionStorage.getItem('selectedMusic');
+        if(selectedMusic){ 
+            musicPlayer.src=selectedMusic;
+            musicPlayer.currentTime=musicStartPosition;
+            musicPlayer.play();
+        }
+        }
+        
+        videoPlayer.addEventListener('play',startAudio);
+        videoPlayer.addEventListener('pause',function(){
+        musicStartPosition=musicPlayer.currentTime;
+        musicPlayer.pause();
+        });
+        videoPlayer.addEventListener('ended',function(){
+        musicPlayer.pause();
+        musicPlayer.src="";
+        });
+
+        var vid, playbtn, seekslider;
+        function initializePlayer(){
+            vid=document.getElementById("my_video");
+            playbtn=document.getElementById("playpausebUTTON");
+            seekslider=document.getElementById("seekslider");
+            playbtn.addEventListener("click",playPause,false);
+            seekslider.addEventListener("change",vidSeek,false);
+            vid.addEventListener("timeupdate",seektimeupdate,false);
+        }
+        window.onload=initializePlayer;
+
+        function playPause(){
+        if(vid.paused){
+            vid.play();
+            playbtn.innerHTML="Pause";
+        }else{
+            vid.pause();
+            playbtn.innerHTML="Play";
+        }
+        }
+
+        function vidSeek(){
+            var seekto=vid.duration*(seekslider.value/100);
+            vid.currentTime=seekto;
+        }
+        function seektimeupdate(){
+            var nt=vid.currentTime*(100/vid.duration);
+            seekslider.value=nt;
+        }
+        function changeQuality(){
+            var selectedQuality=qualitySelect.value;
+            var sources=vid.getElementByTagName('source');
+            for(var i=0;i<sources.length;i++){
+                if(sources[i].getAttribute('label1')==selectedQuality){
+                    vid.src=sources[i].src;
+                    vid.load();
+                    vid.play();
+                    break;
+                }
+            }
+        }
+   
+
+        
+
+
+   </script>
+</body>
+</html>

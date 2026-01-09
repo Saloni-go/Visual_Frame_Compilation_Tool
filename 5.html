@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rewind Video</title>
+</head>
+<body>
+    <video id="myVideo" height="300" width="400" controls src="Mera saya sath hoga @MakeJokeOf _ Saurabh Shukla.mp4"></video>
+    <button id="rewindButton">Rewind</button>
+
+    <script>
+        const video = document.getElementById('myVideo');
+        const rewindButton = document.getElementById('rewindButton');
+
+        rewindButton.addEventListener('click', () => {
+            video.currentTime = 0; // Set video playback to start from the beginning
+            video.play(); // Start playing the video
+        });
+
+        video.addEventListener('ended', () => {
+            video.currentTime = 0; // Reset video playback to start from the beginning
+        });
+    </script>
+</body>
+</html>
